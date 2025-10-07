@@ -1,3 +1,12 @@
-# Notatki z różnych przedmiotów
+# Tworzenie Stron Internetowych
+## Notatki i zadania z lekcji
+### [★](https://github.com/jann33k/szkola/tree/main/TSI)
+## Materiały wspomagające
+### ★ [SOON]
 
-### Tworzenie Stron Internetowych
+
+# Tworzenie Aplikacji Internetowych
+## Notatki i zadania z lekcji
+### ★ [SOON]
+## Materiały uzupełniające
+### ★ [SOON]
