@@ -13,6 +13,8 @@
 ### *Dodatkowe rzeczy*
 - ***Python***
   - [★](https://github.com/jann33k/szkola/tree/main/Dodatkowe/Python)
+- ***C++***
+  - [★](https://github.com/jann33k/szkola/tree/main/Dodatkowe/C%2B%2B)
 <br><br><br>
 ## Przedmioty Zawodowe
 [Sekcja zamknięta, jak będzie mi się chciało, to uzupełnię.]
