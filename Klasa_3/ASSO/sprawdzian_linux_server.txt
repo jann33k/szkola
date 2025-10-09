@@ -112,5 +112,9 @@ iptables -I FORWARD -m --string "www.kotlet.pl" --algo bm -j DROP
 Zainstaluj iptables.
 > apt install iptables
 
+Jeszcze wszystko uruchom
+> /etc/init.d/networking restart
+> /etc/init.d/isc-dhcp-server restart
+> /etc/init.d/firewall
 
 To chyba koniec. Mam dość. Mam nadzieje że komuś innemu się przyda.
