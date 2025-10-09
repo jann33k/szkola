@@ -1,0 +1,129 @@
+Szybki prosty tutorial co robiliśmy na lekcjach, oraz jak zdać sprawdzianik ;p
+
+Krok 1:
+Musisz zaktualizować wszystko, koniecznie!
+> apt update
+> apt upgrade
+
+Krok 2:
+Pobierz 'ifupdown', by móc edytować interfejsy sieciowe
+> apt install ifupdown
+
+Krok 3:
+Edytuj plik interfaces
+> nano /etc/network/interfaces
+Powinieneś edytować plik w następujący sposób:
+- - - -
+#enp0s3
+auto enp0s3
+#allow-hotplug enp0s3
+iface enp0s3 inet dhcp
+
+#enp0s8
+auto enp0s8  #niby nie powinno tego być, ale w praktyce lubiło nie działać bez tego :(
+allow-hotplug enp0s8
+iface enp0s8 inet static #przy 2 interfejsie musi być statyczny
+  address 192.168.1.1
+  netmask 255.255.255.0
+  network 192.168.1.0
+  gateway 192.168.1.1
+- - - -
+
+Krok 4:
+Uruchom ponownie networking
+> /etc/init.d/networking restart
+Następnie sprawdź, czy wszystko sie zgadza
+> ip a
+Jeśli wszystko jest tak jak w pliku konfiguracyjnym, zrobiłeś dobrze!
+
+Krok 5:
+Zainstaluj DHCP Server
+> apt install isc-dhcp-server
+Później wejdź w plik konfiguracyjny
+> nano /etc/dhcp/dhcpd.conf
+Znajdź wpis "A slightly [...]" i zmień go następująco (po prostu pozmieniaj cyferki, ale ja to przepisze):
+- - - -
+#enp0s8
+ subnet 192.168.1.0 netmask 255.255.255.0 {
+  range 192.168.1.10 192.168.1.200;
+  option domain-name-servers 192.168.1.1,8.8.8.8;
+  option domain_name "nazwisko.local";
+  option subnet-mask 255.255.255.0;
+  option routers 192.168.1.1;
+  option broadcast-address 192.168.1.255;
+  default-lease-time 600;
+  max-lease-time 7200;
+}
+
+#enp0s3
+ subnet 10.0.2.0 netmask 255.255.255.0 {
+}
+- - - -
+
+Później musisz wejść w inny plik konfiguracyjny
+> nano /etc/default/isc-dhcp-server
+Dodaj do wpisu o interfejsach ipv4 interfejs 2 karty sieciowej:
+- - - -
+INTERFACESv4="enp0s8"
+- - - -
+
+Krok 6:
+Zrestartuj DHCP
+> /etc/init.d/isc-dhcp-server restart
+Następnie sprawdź status
+> /etc/init.d/isc-dhcp-server status
+Jeśli masz wpis, że działa (powinien być na zielono) to ekstra
+!!!! W tym momencie powinieneś się skomunikować przez Windows Client, ale ja opisuje tylko komendy do Linux Servera.
+
+Krok 7:
+Stwórz plik by zrobić firewalla
+> touch /etc/init.d/firewall
+Nadaj mu uprawnienia do odpalania dla każdego
+> chmod a+x /etc/init.d/firewall
+Edytuj plik.
+> nano /etc/init.d/firewall   # zapisze poniżej, jak powinien wyglądać plik, niestety wszystko ręcznie trzeba :/
+- - - -
+ifconfig enp0s3 10.0.2.15 netmask 255.255.255.0
+ifconfig enp0s8 192.168.1.1 netmask 255.255.255.0
+ip route add default via 10.0.2.1
+
+#Routing
+iptables -F
+iptables -F -t nat
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -X
+
+#Internet
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+#NAT - translacja adresów
+iptables -t nat -A POSTROUTING -o -enp0s3 -j MASQUERADE
+iptables -A FORWARD -o enp0s8 -j ACCEPT
+
+#Blokada stron
+iptables -I FORWARD -m --string "wp.pl" --algo bm -j DROP
+iptables -I FORWARD -m --string "onet.pl" --algo bm -j DROP
+- - - -
+Pamiętaj by zainstalować iptables!
+> apt install iptables
+
+Krok 8:
+Restartuj wszystko a następnie uruchom firewalla
+> /etc/init.d/networking restart
+> /etc/init.d/isc-dhcp-server restart   #Możesz dodatkowo sprawdzić czy działa przez -||- status
+> /etc/init.d/firewall
+
+Krok 9:
+Znów edytuj plik konfiguracyjny DHCP
+> nano /etc/dhcp/dhcpd.conf
+Tym razem znajdź wpis "host fantasia" i edytuj go w następujący sposób:
+- - - -
+host client {
+ hardware ethernet 08:00:27:76:3C:48;   #Tu daj adres MAC karty sieciowej bodajże Windowsa
+ fixed-address 192.168.1.177;
+}
+- - - -
+
+I to wszystko! :P
+Teraz możesz przejść do pliku z robienia sprawdzianu, który został małym przypadkiem udostępniony :PP
