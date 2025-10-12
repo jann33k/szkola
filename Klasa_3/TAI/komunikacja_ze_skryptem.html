@@ -1,0 +1,36 @@
+<!-- Szybkie wytłumaczenie jak działa komunikacja ze skryptem.
+Pierw zacznę od wpisania losowego kodu. -->
+<!-- - - - - -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>skrypt</title>
+  </head>
+  <body>
+    przed skryptem<br>
+    <script type="text/javascript">
+      one=prompt("Co tam?")
+      two=prompt("Jak się czujesz?")
+      document.write("Zapytałem 'Co tam?' a ty odpowiedziałeś '"+one+"'. Następnie zapytałem się 'Jak się czujesz?' na co odpowiedziałeś '"+two+"'.")
+    </script><br>
+    za skryptem
+  </body>
+</html>
+<!-- - - - - -->
+<!-- Teraz szybko wytłumaczę co jak działa.
+Oczywiście trzeba zbudować strukturę html, by w ogóle zabrać się za skrypt.
+Musisz zacząć od opcji <script type="text/javascript">, określa ona jaki skrypt zastosujesz.
+Pewne jest, że musisz zamknąć część ze skryptem poprzez </script>
+Teraz sobie opiszemy, co jest w sekcji ze skryptem!
+one=prompt("Co tam?") -> 'one' to zmienna, 'prompt' to okienko z zapytaniem, a tekst jest umieszczony w tym okienku.
+'prompt' to funkcja nam bardzo potrzebna, bo to dzięki niej użytkownik może komunikować się ze skryptem.
+No i oczywiście trzeba napisać odpowiedź!
+'document.write' to taki odpowiednik 'print' w pythonie lub 'cout>>' w C++, stosuje się go w JavaScripcie.
+Można by powiedzieć, że składnia jest prawie taka sama jak w Pythonie, tzn ("tutaj tekst")
+No i jak umieścić zmienne w takim czymś? Troszkę inaczej
+Jeśli zaczynasz od zmiennej a po niej coś wpisujesz to robisz coś w tym stylu:
+(zmienna+"text") -> a dlaczego tak? bo '+' to doczepianie się do reszty tekstu.
+Jeśli stosujemy w środku zmienną, to wygląda to tak:
+("text"+zmienna+"text")
+A na końcu:
+("text"+zmienna)
