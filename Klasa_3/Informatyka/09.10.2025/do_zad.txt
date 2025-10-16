@@ -11,3 +11,10 @@ w10 = w8+w9
 w11 = (j-h)/2
 w12 = c/d
 w13 = w11+w12
+w14 = w10/w13
+w = w7/w14
+e f g h i j - podac
+a = 2
+b = 5
+c = 10
+d = 3
