@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>dzielenie</title>
+	</head>
+
+	<body>
+		przed skryptem<br><br>
+		<script type="text/javascript">
+			var liczba1=prompt("Podaj liczbę, która będzie dzielona")
+			if (isNaN(liczba1)) {
+				document.write("<font color='red' size='20'> Podałeś napis! </font><br>")
+			}
+			else {
+				var liczba2=prompt("Podaj liczbę, przez którą będziesz dzielić")
+				if (isNaN(liczba2)) {
+					document.write("<font color='red' size='20'> Podałeś napis! </font><br>")
+				}
+				else {
+					if (liczba2 != 0) {
+						wynik = liczba1/liczba2;
+						document.write(liczba1+" / "+liczba2+ " = "+wynik)
+					}
+					else {
+						document.write("<font color='red' size='20'> Nie dziel przez 0! </font><br>")
+					} /* od dzielenia */
+				} /* od liczba2 */
+			} /* od liczba1 */
+		</script><br><br>
+		po skrypcie
+	</body>
+</html>
