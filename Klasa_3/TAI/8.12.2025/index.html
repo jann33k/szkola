@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <title>formularze</title>
+        <script type="text/javascript">
+            function podziel() {
+                alert("Funkcja: będziem dzielić")
+            }//f podziel()
+
+            function test() {
+                var a=document.wybor.l1.value;
+                var b=document.wybor.l2.value;
+
+                if (a>b) {
+                    alert("Pierwsza liczba jest większa");
+                }//if a>b
+
+                if (b>a) {
+                    alert("Druga liczba jest większa")
+                }//if b>a
+
+                if (a==b) {
+                    alert("Liczby są równe")
+                }//if a==b
+            }//f test()
+        </script>
+    </head>
+    <body>
+        <h1 align="center"><font color="blue"><u><b> Małe obliczenia </b></u></font></h1>
+        <form name="wybor">
+            <b><p>Podaj 1 liczbę: </p></b>
+            <input type="number" name="l1" value="0"/>
+            <b><p>Podaj 2 liczbę: </p></b>
+            <input type="number" name="l2" value="0"/>
+            <hr>
+            <input type="button" value="dzielenie" name="dziel" onclick="podziel()"/>
+            <input type="button" value="porównanie" name="sprawdź" onclick="test()"/>
+        </form>
+    </body>
+</html>
