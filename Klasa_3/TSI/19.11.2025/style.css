@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+p {
+    line-height: 1.6;
+    color: #333;
+}
+
+#main-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 36px;
+    color: #0055aa;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 22px;
+    color: #0077cc;
+    font-style: italic;
+}
+
+.kursy ul {
+    margin-bottom: 20px;
+}
+
+.kursy ul li {
+    margin: 5px 0;
+    color: #444;
+}
+
+a[href^="http"] {
+    color: #cc0000;
+}
+
+a[href^="http"]:hover {
+    color: #990000;
+}
+
+a:not([href^="http"]) {
+    color: #006600;
+}
+
+a:not([href^="http"]):hover {
+    color: #003300;
+}
+
+.footer {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.trainer {
+    border: 1px solid #aaa;
+    border-radius: 10px;
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 15px;
+}
+
+#lead-trainer {
+    border: 2px solid #3399ff;
+    border-radius: 10px;
+    width: 45%;
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #eef6ff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.trainer img {
+     width: 150px;
+    height: 150px;
+    border: 3px solid #ccc;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+#lead-trainer img {
+     width: 150px;
+    height: 150px;
+    border: 3px solid #ccc;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
