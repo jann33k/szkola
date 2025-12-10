@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#wprowadzenie {
+    color: #0056b3;
+    font-family: 'Georgia', serif;
+    background-color: #e0f7fa;
+}
+
+.tresc_artykulu {
+    line-height: 1.5;
+    font-size: 18px;
+    padding: 15px;
+}
+
+.wazne {
+    font-weight: bold;
+    font-style: italic;
+    border: 2px solid red;
+}
